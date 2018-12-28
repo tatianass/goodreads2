@@ -22,7 +22,7 @@ class GoodreadsRequest():
         self.req_format = req_format
 
     def request(self):
-        resp = requests.get(self.host+self.path, params=self.params)
+        resp = requests.get(self.host+self.path, params=self.params, timeout=60)
         if resp.status_code != 200:
             raise GoodreadsRequestException(resp.reason, self.path)
         if self.req_format == 'xml':
